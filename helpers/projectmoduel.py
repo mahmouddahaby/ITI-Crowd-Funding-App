@@ -24,7 +24,7 @@ def secondpage(em):
             lst()
             break
         elif int(firstinput) == 3:
-            pass
+            deleteproject
             break
         elif int(firstinput) == 4:
             pass
@@ -157,3 +157,5 @@ def lst():
         print(usrinfo)
 
 
+def deleteproject():
+    pass
