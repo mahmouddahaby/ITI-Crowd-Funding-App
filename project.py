@@ -1,4 +1,4 @@
-import projectmoduel as mod
+import helpers.projectmoduel as mod
 
 mod.firstpage()
 
