@@ -1,6 +1,6 @@
 import re
 
-
+from datetime import date, time, datetime
 
 def firstpage():
     while True:
@@ -10,6 +10,21 @@ def firstpage():
             break
         elif int(firstinput)==2:
             signup()
+            break
+        else:
+            print("try again")
+
+def secondpage(em):
+    while True:
+        firstinput = input("1-Create project\n2-List projects\n3-Delete project")
+        if int(firstinput)==1:
+            projects(em)
+            break
+        elif int(firstinput)==2:
+            lst()
+            break
+        elif int(firstinput) == 3:
+            pass
             break
         else:
             print("try again")
@@ -59,6 +74,7 @@ def signup():
     append(userinfo)
 
 
+
 def append(uinfo):
     try:
         fileobject = open("usrinformation/signup.txt", "a")
@@ -69,8 +85,9 @@ def append(uinfo):
         firstpage()
 
 
+
 def login():
-    fname = e_mail()
+    email = e_mail()
     password = input("Enter your password\n")
 
     fileobj = open("usrinformation/signup.txt", "r")
@@ -79,8 +96,9 @@ def login():
     for u in users:
         usrinfo = u.strip("\n")
         userinfo = usrinfo.split(":")
-        if userinfo[2]==fname and userinfo[3]==password:
+        if userinfo[2]==email and userinfo[3]==password:
             print("login successfully")
+            secondpage(email)
             break
     else:
         print("user not found")
@@ -96,5 +114,43 @@ def password():
         else:
             return p1
             break
+
+
+def projects(e):
+    project = check("project")
+    details = input("Enter project details: ")
+    sdate = date.today()
+    days = dte("Day")
+    month = dte("Month")
+    year = dte("Year")
+    total = 250000
+    enddate = f"{days}-{month}-{year}"
+    projectInfo = f"{e}:{project}:{details}:{sdate}:{enddate}:{total}\n"
+    try:
+        fileobject = open("projectsinfo/project.txt", "a")
+    except Exception as e:
+        print(e)
+    else:
+        fileobject.write(projectInfo)
+
+
+
+def dte(t):
+    while True:
+        d = input(f"Enter your {t} end : ")
+        if d.isdigit():
+            return d
+            break
+        else:
+            print("Inavlid")
+
+
+def lst():
+    fileobj = open("projectsinfo/project.txt", "r")
+    users = fileobj.readlines()
+
+    for u in users:
+        usrinfo = u.strip("\n")
+        print(usrinfo)
 
 
