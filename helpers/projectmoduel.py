@@ -16,7 +16,7 @@ def firstpage():
 
 def secondpage(em):
     while True:
-        firstinput = input("1-Create project\n2-List projects\n3-Delete project")
+        firstinput = input("1-Create project\n2-List projects\n3-Delete project\n4-Edit project\n")
         if int(firstinput)==1:
             projects(em)
             break
@@ -24,6 +24,9 @@ def secondpage(em):
             lst()
             break
         elif int(firstinput) == 3:
+            pass
+            break
+        elif int(firstinput) == 4:
             pass
             break
         else:
