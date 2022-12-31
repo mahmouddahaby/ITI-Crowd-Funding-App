@@ -3,11 +3,16 @@ import re
 
 
 def firstpage():
-    firstinput = input("1-Login\n2-signup\n")
-    if int(firstinput)==1:
-        login()
-    elif int(firstinput)==2:
-        signup()
+    while True:
+        firstinput = input("1-Login\n2-signup\n")
+        if int(firstinput)==1:
+            login()
+            break
+        elif int(firstinput)==2:
+            signup()
+            break
+        else:
+            print("try again")
 
 
 def e_mail():
