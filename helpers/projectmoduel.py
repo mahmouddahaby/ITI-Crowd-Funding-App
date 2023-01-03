@@ -189,5 +189,10 @@ def user_list(em):
         usrinfo = u.strip("\n")
         userinfo = usrinfo.split(":")
         if userinfo[0] == em:
-            print(usrinfo)
+            print(f"Title: {userinfo[1]}")
+            print(f"Details: {userinfo[2]}")
+            print(f"Start date: {userinfo[3]}")
+            print(f"Total: {userinfo[5]}")
+            
+    secondpage(em)
 
