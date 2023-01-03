@@ -16,18 +16,18 @@ def firstpage():
 
 def secondpage(em):
     while True:
-        firstinput = input("1-Create project\n2-List projects\n3-Delete project\n4-Edit project\n")
+        firstinput = input("1-Create project\n2-List projects\n3-List own projects\n4-Delete own project\n")
         if int(firstinput)==1:
             projects(em)
             break
         elif int(firstinput)==2:
-            lst()
+            lst(em)
             break
         elif int(firstinput) == 3:
-            deleteproject
+            user_list(em)
             break
         elif int(firstinput) == 4:
-            pass
+            deleteproject(em)
             break
         else:
             print("try again")
@@ -135,6 +135,7 @@ def projects(e):
         print(e)
     else:
         fileobject.write(projectInfo)
+        secondpage(e)
 
 
 
@@ -148,7 +149,7 @@ def dte(t):
             print("Inavlid")
 
 
-def lst():
+def lst(em):
     fileobj = open("projectsinfo/project.txt", "r")
     users = fileobj.readlines()
 
@@ -156,6 +157,37 @@ def lst():
         usrinfo = u.strip("\n")
         print(usrinfo)
 
+    secondpage(em)
 
-def deleteproject():
-    pass
+
+
+def deleteproject(em):
+    project_name = check("Project")
+    fileobj = open("projectsinfo/project.txt", "r")
+    users = fileobj.readlines()
+
+    with open("projectsinfo/project.txt", "w") as f:
+        for u in users:
+            usrinfo = u.strip("\n")
+            userinfo = usrinfo.split(":")
+            if userinfo[0] == em and userinfo[1] == project_name in u:
+                f.write(" \n")
+            else:
+                f.write(u)
+
+        secondpage(em)
+
+
+
+
+
+def user_list(em):
+    fileobj = open("projectsinfo/project.txt", "r")
+    users = fileobj.readlines()
+
+    for u in users:
+        usrinfo = u.strip("\n")
+        userinfo = usrinfo.split(":")
+        if userinfo[0] == em:
+            print(usrinfo)
+
