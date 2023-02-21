@@ -1,6 +1,6 @@
 # ITI-Crowd-Funding-App
 
-### This is a Django-based web application that allows users to create and donate to crowdfunding campaigns.
+### This is a Python-based application that allows users to create and donate to crowdfunding campaigns.
 -------------------------------------------
 
 ### Installation
